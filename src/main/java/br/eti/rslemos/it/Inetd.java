@@ -2,11 +2,12 @@ package br.eti.rslemos.it;
 
 import java.io.Reader;
 import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
 import javax.ws.rs.OPTIONS;
-import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -27,7 +28,7 @@ public class Inetd {
     System.out.printf("matched resources: %s\n", info.getMatchedResources());
   }
 
-  @GET @POST @PUT @DELETE @HEAD @OPTIONS @PATCH
+  @GET @POST @PUT @DELETE @HEAD @OPTIONS
   @Path("/discard")
   public void discard() {
     hole.feed();
@@ -35,7 +36,7 @@ public class Inetd {
 
   @GET
   @Path("/echo/{argument}")
-  public String echo(@PathParam("argument") String argument) {
+  public String echo(@PathParam("argument") @Valid @Pattern(regexp = "^(?!quack).*$", message = "You know, quacks don't echo") String argument) {
     return chamber.introduce(argument);
   }
 

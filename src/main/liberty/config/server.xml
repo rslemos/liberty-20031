@@ -29,8 +29,9 @@
 
 <server>
   <featureManager>
-    <feature>jaxrs-2.1</feature>
-    <feature>cdi-2.0</feature>
+    <feature>jaxrs-2.0</feature>
+    <feature>cdi-1.2</feature>
+    <feature>beanValidation-1.1</feature>
   </featureManager>
 
   <variable name="default.http.port" defaultValue="80"/>
