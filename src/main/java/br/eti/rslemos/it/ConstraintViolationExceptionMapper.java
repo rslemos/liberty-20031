@@ -16,12 +16,14 @@ public class ConstraintViolationExceptionMapper implements ExceptionMapper<Const
 // public class ConstraintViolationExceptionMapper implements ExceptionMapper<ValidationException> {
 // public class ConstraintViolationExceptionMapper implements ExceptionMapper<RuntimeException> {
 // public class ConstraintViolationExceptionMapper implements ExceptionMapper<Exception> {
+// public class ConstraintViolationExceptionMapper implements ExceptionMapper<Throwable> {
 
   @Override
   public Response toResponse(ConstraintViolationException exception) {
   // public Response toResponse(ValidationException exception) {
   // public Response toResponse(RuntimeException exception) {
   // public Response toResponse(Exception exception) {
+  // public Response toResponse(Throwable exception) {
     StringWriter writer = new StringWriter();
     exception.printStackTrace(new PrintWriter(writer));
     return Response.status(Status.BAD_REQUEST)
